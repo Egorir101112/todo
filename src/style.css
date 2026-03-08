@@ -1,0 +1,20 @@
+#list {
+    margin-top: 1rem;
+}
+
+.buttons {
+    float: right;
+}
+
+.row {
+    margin-top: 1rem;
+}
+
+.done {
+    color: green;
+    text-decoration: line-through; /*зачёркивание*/
+}
+
+.check {
+    color: green;
+}
