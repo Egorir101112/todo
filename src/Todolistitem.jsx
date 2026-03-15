@@ -9,16 +9,22 @@ class TodoListItem extends React.Component {
 
     onLabelClick = () => {
         console.log(`Нажато на ${this.props.label}`);
-        this.setState({done: true})
+        this.setState(({done}) => {
+            return {
+                done: !done
+            }
+        } );
     }
 
     onCheckClick = () => {
-        this.setState({check: true});
+        this.setState(({check}) =>{
+            return {
+                check: !check
+            }
+        }
+    );
     }
 
-    onTrashClick = () => {
-        console.log(`Удалено  ${this.props.label}`);
-    }
 
     render() {
         let myClass = ''
@@ -42,7 +48,7 @@ class TodoListItem extends React.Component {
             <button onClick={this.onCheckClick} type="button" className="btn btn-success buttons">
                 <i className="fa-solid fa-check"></i>
             </button>
-            <button onClick={this.onTrashClick} type="button" className="btn btn-danger buttons">
+            <button onClick={this.props.onDeleted} type="button" className="btn btn-danger buttons">
                 <i className="fa-solid fa-trash"></i>
             </button>
         </div>
