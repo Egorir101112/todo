@@ -4,7 +4,7 @@ class ItemFilter extends React.Component {
     render() {   
         const { onFilterChange } = this.props;
         return(
-            <div className="btn-group" role="group">
+            <div className="btn-group mt-3" role="group" id="filter">
                 <input type="radio" className="btn-check" name="btnradio" id="btnradio1" onClick={() => onFilterChange('all')}/>
                 <label className="btn btn-outline-primary" htmlFor="btnradio1">Всё</label>
 
