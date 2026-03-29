@@ -3,7 +3,7 @@ import AppHeader from "./AppHeader.jsx";
 import ItemFilter from "./itemsFilter.jsx";
 import SearchPanel from "./SearchPanel.jsx";
 import TodoList from "./TodoList.jsx";
-import AddItems from "./Additems.jsx";
+import AddItems from "./AddItems.jsx";
 
 const App = () => {
 
