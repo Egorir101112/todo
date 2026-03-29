@@ -2,55 +2,59 @@ import React from "react";
 
 class TodoListItem extends React.Component {
 
-    state = {
-        done: false,
-        check: false
-    }
-
-    onLabelClick = () => {
-        console.log(`Нажато на ${this.props.label}`);
-        this.setState(({done}) => {
-            return {
-                done: !done
-            }
-        } );
-    }
-
-    onCheckClick = () => {
-        this.setState(({check}) =>{
-            return {
-                check: !check
-            }
-        }
-    );
-    }
-
-
     render() {
+        const {label,
+            onDeleted,
+            onToggleDone,
+            onToggleImportant,
+            done,
+            important
+        } = this.props;
+    
         let myClass = ''
-        if(this.state.done) {
+        if(done) {
             myClass += ' done'
         }
 
-        if(this.state.check) {
-            myClass = myClass + ' check'
+        if(important) {
+            myClass = myClass + 'important'
         }
-   
-        const {label} = this.props;
-    // const itemStyle = {
-    //     color: important ? 'red' : 'black'
-
+        
     return(
-        <div>
-            <span className={myClass} onClick={this.onLabelClick}>
+        <div className="row">
+            <div className="col-6">
+            <span className={myClass} onClick={onToggleDone}>
                 {label}
              </span>
-            <button onClick={this.onCheckClick} type="button" className="btn btn-success buttons">
-                <i className="fa-solid fa-check"></i>
-            </button>
-            <button onClick={this.props.onDeleted} type="button" className="btn btn-danger buttons">
-                <i className="fa-solid fa-trash"></i>
-            </button>
+            </div>
+            <div className="col-6">
+            {done ? ( 
+                <button
+                onClick={onToggleDone}
+                type="button"
+                className="btn btn-outline-warning buttons">
+                    <i className="fa-solid fa-arrow-left"></i>
+                </button>
+            ) : (
+                <button
+                onClick={onToggleDone}
+                type="button"
+                className="btn btn-success buttons">
+                    <i className="fa-solid fa-check"></i>
+                </button>
+            )}  
+                <button onClick={onToggleImportant}
+                    type="button"
+                    className="btn btn-primary buttons">
+                        <i className="fa-solid fa-exclamation"></i>
+                </button>
+
+                <button onClick={onDeleted}
+                type="button"
+                className="btn btn-danger buttons">
+                    <i className="fa-solid fa-trash"></i>
+                </button>
+            </div>
         </div>
     )
   }
